@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reset-css@4.0.1/reset.min.css" />
+    <style>
+        body {
+            display: grid;
+            place-items: center;
+            height: 100vh;
+            margin: 0;
+            background: dodgerblue
+        }
+
+        .disital-clock-main {
+            display: flex;
+            color: white;
+            font-size: 6rem;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        .disital-clock-hm {
+            display: flex;
+            font-weight: bold;
+        }
+        .disital-clock-as {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.4em;
+            flex-direction: column;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="disital-clock-main">
+            <div class="disital-clock-hm">
+                <div class="disital-clock-hour"></div>
+                <div class="disital-clock-separator">:</div>
+                <div class="disital-clock-minute"></div>
+            </div>
+            <div class="disital-clock-as">
+                <div class="disital-clock-ampm"></div>
+                <div class="disital-clock-second"></div>
+            </div>
+        </div>
+    </div>
+
+
+    <script>
+        const updateClock = () => {
+            const now = new Date()
+            let h = now.getHours()
+            let m = now.getMinutes()
+            let s = now.getSeconds()
+            const ampm = h >= 12 ? 'PM' : 'AM';
+            h = h % 12;
+            h = h ? h : 12;
+            h = h < 10 ? `0${h}` : h
+            m = m < 10 ? `0${m}` : m
+            s = s < 10 ? `0${s}` : s
+
+            document.querySelector('.disital-clock-ampm').textContent = ampm
+            document.querySelector('.disital-clock-hour').textContent = h
+            document.querySelector('.disital-clock-minute').textContent = m
+            document.querySelector('.disital-clock-second').textContent = s
+        }
+        setInterval(updateClock, 1000);
+        updateClock()
+    </script>
+</body>
+
+</html>
