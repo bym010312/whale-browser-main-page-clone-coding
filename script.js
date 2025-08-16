@@ -37,18 +37,43 @@ const searchInput = () => {
     })
 }
 
-document.addEventListener('mousemove',(e) => {
+document.addEventListener('mousemove', (e) => {
     const centerX = window.innerWidth / 2;
     const clientX = e.clientX;
     const nextButton = document.querySelector('.next-button');
 
-    if (centerX < clientX){
+    if (centerX < clientX) {
         nextButton.classList.add('show');
     } else {
         nextButton.classList.remove('show')
     }
 })
 
+const wallpaperChanger = () => {
+    const nextButton = document.querySelector('.next-button');
+    const body = document.body;
+
+    const images = [
+        'image/A-1_웨일북2_배경화면.png',
+        'image/A-2_웨일북2_배경화면.png',
+        'image/A-3_웨일북2_배경화면.png',
+        'image/A-4_웨일북2_배경화면.png',
+        'image/A-5_웨일북2_배경화면.png',
+        'image/A-6_웨일북2_배경화면.png',
+        'image/A-7_웨일북2_배경화면.png',
+        'image/A-8_웨일북2_배경화면.png',
+    ]
+
+    let currentIndex = Math.floor(Math.random() * images.length);
+    body.style.backgroundImage = `linear-gradient(rgba(0, 0, 0, 0.25), rgba(0, 0, 0, 0.25)),url('${images[currentIndex]}')`;
+
+    nextButton.addEventListener('click', () => {
+        currentIndex = (currentIndex + 1) % images.length;
+        body.style.backgroundImage = `linear-gradient(rgba(0, 0, 0, 0.25), rgba(0, 0, 0, 0.25)),url(${images[currentIndex]})`
+    })
+}
+
 setInterval(updateClock, 1000);
 updateClock()
 searchInput()
+wallpaperChanger()

@@ -7,6 +7,7 @@ body {
     font-family: 'Nanum Gothic', sans-serif, 'Material Symbols Outlined';
     user-select: none;
     overflow: hidden;
+    transition: background-image 0.5s ease-in-out;
 }
 
 .container {
