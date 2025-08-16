@@ -31,7 +31,7 @@ app.get('/api/weather', async (req, res) => {
         res.json(data);
     } catch (error) {
         console.error("API 호출 중 에러 발생:", error); // 에러가 나면 터미널에 표시
-        res.status(500).json({ error: '날씨 정보를 가져오는 데 실패했습니다.' });
+        res.status(500).json({ error: '알 수 없음' });
     }
 });
 

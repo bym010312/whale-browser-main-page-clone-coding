@@ -1,9 +1,11 @@
 const body = document.body;
 const nextButton = document.querySelector('.next-button');
 const searchBar = document.querySelector('.search-bar');
-const weatherContainer = document.querySelector('.weather span:first-child');
-const tempContainer = document.querySelector('.weather span:nth-child(2)');
-const cityContainer = document.querySelector('.weather span:last-child')
+const weatherElements = {
+    weather: document.querySelector('.weather span:first-child'),
+    temp: document.querySelector('.weather span:nth-child(2)'),
+    city: document.querySelector('.weather span:last-child'),
+}
 const clockElements = {
     hour: document.querySelector('.disital-clock-hour'),
     minute: document.querySelector('.disital-clock-minute'),
@@ -97,15 +99,13 @@ const weatherMarker = () => {
         fetch(url)
             .then(response => response.json())
             .then(data => {
-
-
-                cityContainer.innerText = data.name;
-                weatherContainer.innerText = `${data.weather[0].main}`;
-                tempContainer.innerText = `${Math.round(data.main.temp)}℃`
+                weatherElements.city.innerText = data.name;
+                weatherElements.weather.innerText = `${data.weather[0].main}`;
+                weatherElements.temp.innerText = `${Math.round(data.main.temp)}℃`
             });
     }
     function onGeoError() {
-        alert("위치를 찾을 수 없어 날씨 정보를 제공할 수 없습니다.");
+        weatherElements.city.innerText = '현재 날씨를 제공할 수 없습니다.'
     }
     navigator.geolocation.getCurrentPosition(onGeoOk, onGeoError);
 };

@@ -133,7 +133,7 @@ body {
     margin-top: 0.5rem;
 }
 
-hr {
+.clock-line {
     border: none;
     height: 0.5px;
     background: rgba(255, 255, 255, 0.2);
@@ -149,31 +149,59 @@ footer {
     right: 0;
     display: flex;
     align-items: center;
+    justify-content: space-between;
     padding: 20px;
     color: white;
 }
 
-footer>div {
-    margin: 0 20px;
-}
-
-.wheather {
-    margin-right: auto;
-    cursor: pointer;
-}
-
-.memo,
-.todoList,
-.wishList {
-    margin-left: 20px;
-    cursor: pointer;
-}
-.todoList {
+.image-info {
     display: flex;
     align-items: center;
+    gap: 15px;
+    font-size: 11px;
+    opacity: 0.8;
 }
-.todoList .todo-add {
-    vertical-align: middle;
+
+.image-info-text {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.widget {
+    display: flex;
+    flex-direction: row;
+    gap: 25px;
+}
+
+.weather, .memo, .todoList, .wishList, .setting {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    cursor: pointer;
+    font-size: 11px;
+}
+
+.weather:hover, .memo:hover, .todoList:hover, .wishList:hover, .setting:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+    color: white;
+    padding: 6px 8px; 
+    border-radius: 8px;
+    transition: background-color 0.2s ease;
+}
+
+.cityContainer {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.widget-line {
+    border: none;
+    margin: 0;
+    width: 1px;
+    height: 20px;
+    background-color: rgba(255, 255, 255, 0.4);
 }
 
 .slide-container {
