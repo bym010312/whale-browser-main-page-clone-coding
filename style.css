@@ -1,7 +1,6 @@
 body {
     margin: 0;
     background-size: cover;
-    background-image: linear-gradient(rgba(0, 0, 0, 0.25), rgba(0, 0, 0, 0.25)), url('image/A-7_웨일북2_배경화면.png');
     background-repeat: no-repeat;
     background-position: center;
     font-family: 'Nanum Gothic', sans-serif, 'Material Symbols Outlined';
@@ -11,13 +10,18 @@ body {
 }
 
 .container {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.25), rgba(0, 0, 0, 0.25));
     position: relative;
     display: flex;
     min-height: 100vh;
     align-items: center;
     justify-content: center;
+    transition: background-image 0.5s ease, opacity 0.5s ease;
 }
 
+.no-gradient {
+    background-image: none !important;
+}
 .material-symbols-outlined {
     color: white;
     font-size: 1rem;
@@ -28,6 +32,8 @@ body {
     flex-direction: column;
     width: 100%;
     max-width: 600px;
+    opacity: 1;
+    transition: opacity 0.3s ease;
 }
 
 .search-box {
@@ -153,6 +159,20 @@ footer {
     padding: 20px;
     color: white;
 }
+.like-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    border: none;
+    background: rgba(0,0,0,0.3);
+    transition: 0.3s;
+}
+.like-button:hover {
+    background: rgba(0,0,0,0.5);
+}
 
 .image-info {
     display: flex;
@@ -171,37 +191,43 @@ footer {
 .widget {
     display: flex;
     flex-direction: row;
-    gap: 25px;
+    align-items: center; 
+    gap: 0px;
 }
 
 .weather, .memo, .todoList, .wishList, .setting {
     display: flex;
     align-items: center;
-    gap: 5px;
+    gap:0;
     cursor: pointer;
-    font-size: 11px;
+    font-size: 0.8rem;
+    padding: 8px 10px; 
+    border-radius: 8px;
 }
 
 .weather:hover, .memo:hover, .todoList:hover, .wishList:hover, .setting:hover {
-    background-color: rgba(255, 255, 255, 0.2);
+    background-color: rgba(255, 255, 255, 0.1);
     color: white;
-    padding: 6px 8px; 
+    padding: 8px 10px; 
     border-radius: 8px;
     transition: background-color 0.2s ease;
+}
+
+.widget-line {
+    border: none;
+    width: 1px;
+    align-self: stretch;
+    background-color: rgba(255, 255, 255, 0.4);
+}
+
+.setting {
+    font-size: 2rem;
 }
 
 .cityContainer {
     display: flex;
     align-items: center;
     gap: 4px;
-}
-
-.widget-line {
-    border: none;
-    margin: 0;
-    width: 1px;
-    height: 20px;
-    background-color: rgba(255, 255, 255, 0.4);
 }
 
 .slide-container {

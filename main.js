@@ -1,6 +1,10 @@
 const body = document.body;
 const nextButton = document.querySelector('.next-button');
 const searchBar = document.querySelector('.search-bar');
+const imageInfo = document.querySelector('.image-info');
+const section = document.querySelector('section');
+const widget = document.querySelector('.widget');
+const container = document.querySelector('.container');
 const weatherElements = {
     weather: document.querySelector('.weather span:first-child'),
     temp: document.querySelector('.weather span:nth-child(2)'),
@@ -73,7 +77,7 @@ const wallpaperChanger = () => {
 
     const setBackgroundImage = () => {
         const imageUrl = images[currentIndex];
-        body.style.backgroundImage = `linear-gradient(rgba(0, 0, 0, 0.25), rgba(0, 0, 0, 0.25)), url('${imageUrl}')`;
+        body.style.backgroundImage = `url('${imageUrl}')`;
     };
 
     const handleNextImage = () => {
@@ -81,15 +85,12 @@ const wallpaperChanger = () => {
         setBackgroundImage();
     };
 
-    // 초기 배경화면 설정
     setBackgroundImage();
-    // 버튼 클릭 이벤트 연결
     nextButton.addEventListener('click', handleNextImage);
 };
 
-// 5. 날씨 기능 (오타 수정 및 기능 호출 추가)
+// 날씨 기능
 const weatherMarker = () => {
-    const API_KEY = "";
     const onGeoOk = (position) => {
         const lat = position.coords.latitude;
         const lon = position.coords.longitude;
@@ -110,6 +111,20 @@ const weatherMarker = () => {
     navigator.geolocation.getCurrentPosition(onGeoOk, onGeoError);
 };
 
+// imageInfo 호버시 변환기능
+const hoverImageInfo = () => {
+    imageInfo.addEventListener('mouseover', () => {
+        section.style.opacity = '0';
+        widget.style.opacity = '0';
+        container.classList.add('no-gradient');
+    })
+    imageInfo.addEventListener('mouseout', () => {
+        section.style.opacity = '1';
+        widget.style.opacity = '1';
+        container.classList.remove('no-gradient');
+    })
+}
+
 // 모든 기능을 시작하는 초기화 함수
 function init() {
      
@@ -124,6 +139,7 @@ function init() {
 
     // 기능 실행
     wallpaperChanger();
+    hoverImageInfo();
 }
 
 // 초기화 함수 실행
